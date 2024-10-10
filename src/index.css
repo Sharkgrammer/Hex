@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .hexagon {
-  width: 230.940px;
+  width: 230px;
   height: 200px;
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
