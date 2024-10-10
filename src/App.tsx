@@ -1,5 +1,6 @@
 import Hex from "./components/core/Hex.tsx";
 import posts from "./assets/data/posts.json";
+import Draggable from 'react-draggable';
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
     }
 
     return (
-        <div className="h-full w-full select-none">
+        <div className="h-full w-full select-none test">
 
             {/* TODO control div, somehow */}
             <div>
@@ -46,9 +47,11 @@ function App() {
 
             {/* Generated Hive Div */}
 
-            <div className="relative w-screen h-screen overflow-hidden">
-                {temp()}
-            </div>
+            <Draggable>
+                <div className="relative h-full w-full min-w-screen min-h-screen cursor-grab active:cursor-grabbing test">
+                    {temp()}
+                </div>
+            </Draggable>
 
         </div>
     )
