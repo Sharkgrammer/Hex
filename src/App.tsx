@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <div>
+            <div className="flex p-2 pt-[120px]">
+
+                <div className="flex gap-0.5 flex-col">
+
+                    <div className="hexagon flex justify-center items-center h-full w-full bg-red-500">
+                        <p>hello</p>
+                    </div>
+
+                    <div className="hexagon bg-red-500 flex justify-center items-center h-full w-full">
+                        <p>test</p>
+                    </div>
+                </div>
+
+                <div className="-ml-[56px] -mt-[101px] flex gap-0.5 flex-col">
+
+                    <div className="hexagon bg-amber-500 flex justify-center items-center h-full w-full">
+                        test2
+                    </div>
+
+                    <div className="hexagon bg-amber-500 flex justify-center items-center h-full w-full">
+                        test3
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div className="fixed top-[200px] left-[500px] hexagon bg-amber-500 flex justify-center items-center h-full w-full">
+                test3
+            </div>
+        </div>
+    )
 }
 
 export default App
