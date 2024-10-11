@@ -7,7 +7,8 @@ export interface pos {
 
 export interface hexdata {
     data: any,
-    pos: pos
+    pos: pos,
+    grid: { row: number, col: number }
 }
 
 export const buffer: number = 0;

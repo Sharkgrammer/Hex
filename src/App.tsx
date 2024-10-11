@@ -2,7 +2,7 @@ import Hex from "./components/core/Hex.tsx";
 import posts from "./assets/data/posts.json";
 import Draggable from 'react-draggable';
 import {useEffect, useRef, useState} from "react";
-import {buffer, hexdata, pos, xJump, yAdj, yJump} from "./index.ts";
+import {buffer, hexdata, pos, xJump, yJump} from "./index.ts";
 
 function App() {
 
@@ -57,7 +57,7 @@ function App() {
 
         let h = removeHives(v);
         //addHives(v);
-        generateCol(h, v);
+        //generateCol(h, v);
 
         //setHive(generateHive(v));
         //console.log(nodeRef.current.children)
@@ -80,7 +80,7 @@ function App() {
 
     }
 
-    function generateCol(h:hexdata[], b:pos){
+    function generateCol(h: hexdata[], b: pos) {
 
         let y = b.y1;
 
@@ -105,7 +105,7 @@ function App() {
         let elements: any = [];
 
         let x = b.x1;
-        let y = b.y1 + yAdj;
+        let y = b.y1;
 
         let maxContainer: any = {minX: x, minY: y};
 
@@ -119,7 +119,8 @@ function App() {
             while (y < b.y2) {
                 let data: hexdata = {
                     data: getPost(),
-                    pos: {x1: x, y1: y, x2: x + 230, y2: y + 200}
+                    pos: {x1: x, y1: y, x2: x + 230, y2: y + 200},
+                    grid: {row: row, col: col}
                 }
 
                 elements.push(data)
@@ -131,7 +132,7 @@ function App() {
             if (col == 1) maxContainer.maxY = y;
 
             x += xJump;
-            y = (col % 2 == 0) ? b.y1 : b.y1 + yAdj;
+            y = b.y1;
 
             col += 1;
             row = 0;
