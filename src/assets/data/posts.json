@@ -9,27 +9,67 @@
   },
   {
     "type": "image",
-    "link": "./img/owl1.png"
-  },
-  {
-    "type": "image",
-    "link": "./img/sunsetpopcorn.jpg"
-  },
-  {
-    "type": "image",
-    "link": "./img/snowbears.jpg"
-  },
-  {
-    "type": "image",
-    "link": "./img/sharksflowers.jpg"
-  },
-  {
-    "type": "image",
-    "link": "./img/quicksunset.jpg"
+    "link": "./img/forestbunny.jpg"
   },
   {
     "type": "text",
-    "text": "The art belongs to @artbymissmolly."
+    "text": "Sunsets never get old do they."
+  },
+  {
+    "type": "image",
+    "link": "./img/json.png"
+  },
+  {
+    "type": "image",
+    "link": "./img/kestrel.jpg"
+  },
+  {
+    "type": "text",
+    "text": "Sometimes you just need a good book."
+  },
+  {
+    "type": "text",
+    "text": "Dreaming of future adventures."
+  },
+  {
+    "type": "image",
+    "link": "./img/swans.jpg"
+  },
+  {
+    "type": "text",
+    "text": "Weekend plans: relax, recharge, repeat."
+  },
+  {
+    "type": "image",
+    "link": "./img/niceflowers.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/owl3.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/ham.png"
+  },
+  {
+    "type": "text",
+    "text": "Can’t wait for the holidays! Who else is excited?"
+  },
+  {
+    "type": "image",
+    "link": "./img/flowerfield.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/ow.png"
+  },
+  {
+    "type": "text",
+    "text": "Feeling grateful for the little things today."
+  },
+  {
+    "type": "image",
+    "link": "./img/bigmoonlistsea.jpg"
   },
   {
     "type": "image",
@@ -41,11 +81,27 @@
   },
   {
     "type": "image",
-    "link": "./img/bigmoonlistsea.jpg"
+    "link": "./img/pulse.png"
+  },
+  {
+    "type": "text",
+    "text": "Can’t believe it’s already October! So late!"
+  },
+  {
+    "type": "image",
+    "link": "./img/quicksunset.jpg"
   },
   {
     "type": "image",
     "link": "./img/owl2.jpg"
+  },
+  {
+    "type": "text",
+    "text": "The art belongs to @artbymissmolly."
+  },
+  {
+    "type": "image",
+    "link": "./img/ring.png"
   },
   {
     "type": "image",
@@ -53,15 +109,63 @@
   },
   {
     "type": "image",
-    "link": "./img/flowerfield.jpg"
+    "link": "./img/sam.png"
+  },
+  {
+    "type": "text",
+    "text": "Just finished an amazing workout!"
   },
   {
     "type": "image",
-    "link": "./img/forestbunny.jpg"
+    "link": "./img/butterfly.jpg"
   },
   {
     "type": "image",
-    "link": "./img/kestrel.jpg"
+    "link": "./img/shark.png"
+  },
+  {
+    "type": "image",
+    "link": "./img/owl1.png"
+  },
+  {
+    "type": "text",
+    "text": "Throwback to better times, missing these moments a lot."
+  },
+  {
+    "type": "image",
+    "link": "./img/sunsetpopcorn.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/stats.png"
+  },
+  {
+    "type": "image",
+    "link": "./img/snowbears.jpg"
+  },
+  {
+    "type": "text",
+    "text": "Starting the day with coffee and good vibes!"
+  },
+  {
+    "type": "text",
+    "text": "Life’s too short not to chase your dreams."
+  },
+  {
+    "type": "image",
+    "link": "./img/pa.png"
+  },
+  {
+    "type": "text",
+    "text": "Who else loves the smell of fresh rain?"
+  },
+  {
+    "type": "image",
+    "link": "./img/power.png"
+  },
+  {
+    "type": "text",
+    "text": "That feeling when everything falls into place. Haha!"
   },
   {
     "type": "image",
@@ -73,18 +177,26 @@
   },
   {
     "type": "image",
-    "link": "./img/swans.jpg"
+    "link": "./img/stacker.png"
+  },
+  {
+    "type": "text",
+    "text": "Happiness is a choice, every single day."
   },
   {
     "type": "image",
-    "link": "./img/butterfly.jpg"
+    "link": "./img/sharksflowers.jpg"
   },
   {
     "type": "image",
-    "link": "./img/niceflowers.jpg"
+    "link": "./img/sonar.png"
   },
   {
-    "type": "image",
-    "link": "./img/owl3.jpg"
+    "type": "text",
+    "text": "Currently obsessed with this new hobby!"
+  },
+  {
+    "type": "text",
+    "text": "Finding joy in the simple things today."
   }
 ]

@@ -20,9 +20,7 @@ function Hex({data, className, id, modal}: { data: hexdata, className?: string, 
                             <ReactPlayer url={data.post.link} pip={false} width="220px" height="200px"/>
                         </div>
                     ) || data.post.type == "image" && (
-                        <div>
-                            <img src={data.post.link} className="pointer-events-none" alt="Image"/>
-                        </div>
+                        <img src={data.post.link} className="pointer-events-none" alt="Image"/>
                     )}
                 </div>
 
