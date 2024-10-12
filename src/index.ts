@@ -1,5 +1,5 @@
 export interface hexdata {
-    data: any,
+    post: any,
     grid: { row: number, col: number }
 }
 
@@ -17,5 +17,5 @@ export function getHeight(row:number){
     return row * yJump;
 }
 
-export const buffer: number = 230;
+export const buffer: number = 140;
 export const hiveAdj: number = 1;

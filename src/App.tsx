@@ -16,27 +16,22 @@ interface bound {
 function App() {
 
     const nodeRef = useRef(null);
-    const [hive, setHive] = useState<hexdata[]>([]);
-    const [bounds, setBounds] = useState<bound>({maxCol: 0, minCol: 0, maxRow: 0, minRow: 0, deltaX: 0, deltaY: 0});
+    const isDragging = useRef<boolean>(false);
+    const bounds = useRef<bound>({maxCol: 0, minCol: 0, maxRow: 0, minRow: 0, deltaX: 0, deltaY: 0});
+    const post = useRef<number>(0);
 
-    let post = 0;
+    const [hive, setHive] = useState<hexdata[]>([]);
+    const [modalHive, setModalHive] = useState<hexdata>(null);
 
     useEffect(() => {
         generateInitHive();
     }, [])
 
-
-    function getPost() {
-        post = (post == posts.length - 1 ? 0 : post + 1);
-
-        return posts[post];
-    }
-
     // @ts-ignore
     function handleDrag(e: any, ui: any) {
-        let b: bound = bounds;
+        dragStart();
 
-        console.log(hive.length)
+        let b: bound = bounds.current;
 
         b.deltaX += ui.deltaX;
         b.deltaY += ui.deltaY;
@@ -71,7 +66,7 @@ function App() {
             b.deltaY = 0;
         }
 
-        setBounds(b);
+        bounds.current = b;
     }
 
     function generate(minCol: number, maxCol: number, minRow: number, maxRow: number) {
@@ -80,12 +75,16 @@ function App() {
         for (let col = minCol; col < maxCol; col++) {
             for (let row = minRow; row < maxRow; row++) {
 
+                let postData = posts[post.current];
+
                 let data: hexdata = {
-                    data: getPost(),
+                    post: postData,
                     grid: {row: row, col: col}
                 }
 
                 elements.push(data);
+
+                post.current = (post.current == posts.length - 1 ? 0 : post.current + 1);
             }
         }
 
@@ -95,10 +94,10 @@ function App() {
     function removeHives() {
         return hive.filter((hive: hexdata) => {
                 return (
-                    hive.grid.row <= bounds.maxRow + viewportAdj &&
-                    hive.grid.row >= bounds.minRow - viewportAdj &&
-                    hive.grid.col <= bounds.maxCol + viewportAdj &&
-                    hive.grid.col >= bounds.minCol - viewportAdj
+                    hive.grid.row <= bounds.current.maxRow + viewportAdj &&
+                    hive.grid.row >= bounds.current.minRow - viewportAdj &&
+                    hive.grid.col <= bounds.current.maxCol + viewportAdj &&
+                    hive.grid.col >= bounds.current.minCol - viewportAdj
                 );
             }
         )
@@ -106,7 +105,7 @@ function App() {
 
     function generateInitHive() {
 
-        let bounds = {
+        let b = {
             maxCol: Math.ceil(window.innerWidth / xJump) + viewportAdj,
             maxRow: Math.ceil(window.innerHeight / yJump) + viewportAdj,
             minCol: -viewportAdj,
@@ -115,25 +114,58 @@ function App() {
             deltaY: 0
         };
 
-        setBounds(bounds);
-        generate(bounds.minCol, bounds.maxCol, bounds.minRow, bounds.maxRow);
+        bounds.current = b;
+        generate(b.minCol, b.maxCol, b.minRow, b.maxRow);
+    }
+
+    function dragStart() {
+        isDragging.current = true;
+    }
+
+    function dragStop() {
+        setTimeout(() => {
+            isDragging.current = false;
+        }, 1000);
+    }
+
+    function showPost(hex: hexdata) {
+        console.log(hex.post.type);
+
+        setModalHive(hex);
     }
 
     return (
         <div className="select-none no-scroll bg-main-light h-screen w-screen">
 
-            {/* Generated Hive Div */}
-            <Draggable onDrag={handleDrag} nodeRef={nodeRef}>
-                <div ref={nodeRef}
-                     className="relative cursor-grab active:cursor-grabbing test">
+            <div className={`${modalHive && "animate-op-fade opacity-50"}`}>
+                {/* Generated Hive Div */}
+                <Draggable onDrag={handleDrag} nodeRef={nodeRef} onStop={dragStop}>
+                    <div ref={nodeRef} className="relative cursor-grab active:cursor-grabbing test">
 
-                    {hive.map((hex, index) => (
-                        <Hex data={hex} key={index}/>
-                    ))}
+                        {hive.map((hex, index) => (
+                            <div key={index} onClick={() => !isDragging.current && showPost(hex)}>
+                                <Hex data={hex}/>
+                            </div>
+                        ))}
 
+                    </div>
+                </Draggable>
+            </div>
+
+            {modalHive && (
+                <div
+                    className="absolute h-screen w-screen  flex justify-center items-center cursor-pointer animate-fade-in"
+                    onClick={() => setModalHive(null)}>
+
+                    <div className="w-[230px] h-[200px] scale-200 opacity-100 flex items-center justify-center">
+
+                        {hive.length > 0 && (
+                            <Hex data={modalHive} modal={true}/>
+                        )}
+
+                    </div>
                 </div>
-            </Draggable>
-
+            )}
         </div>
     )
 }
