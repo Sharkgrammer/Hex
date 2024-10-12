@@ -2,40 +2,29 @@ import Hex from "./components/core/Hex.tsx";
 import posts from "./assets/data/posts.json";
 import Draggable from 'react-draggable';
 import {useEffect, useRef, useState} from "react";
-import {buffer, hexdata, pos, xJump, yJump} from "./index.ts";
+import {hexdata, buffer, hiveAdj, xJump, yJump, viewportAdj} from "./index.ts";
+
+interface bound {
+    maxCol: number,
+    minCol: number,
+    maxRow: number,
+    minRow: number,
+    deltaX: number,
+    deltaY: number
+}
 
 function App() {
 
     const nodeRef = useRef(null);
-    const [position, setPosition] = useState({x: 0, y: 0});
-
-    const [bounds, setBounds] = useState({x1: 0, x2: 0, y1: 0, y2: 0});
-    const [maxMin, setMaxMin] = useState({maxX: 0, minX: 0, maxY: 0, minY: 0});
-
     const [hive, setHive] = useState<hexdata[]>([]);
+    const [bounds, setBounds] = useState<bound>({maxCol: 0, minCol: 0, maxRow: 0, minRow: 0, deltaX: 0, deltaY: 0});
 
     let post = 0;
 
     useEffect(() => {
-        let b = getBounds();
-
-        setHive(generateHive(b));
+        generateInitHive();
     }, [])
 
-    function getBounds() {
-        let b: pos = {x1: 0, x2: 0, y1: 0, y2: 0};
-
-        b.x1 = -buffer;
-        b.y1 = -buffer;
-
-        b.x2 = window.innerWidth + buffer;
-        b.y2 = window.innerHeight + buffer;
-
-
-        setBounds(b);
-
-        return b;
-    }
 
     function getPost() {
         post = (post == posts.length - 1 ? 0 : post + 1);
@@ -43,114 +32,100 @@ function App() {
         return posts[post];
     }
 
+    // @ts-ignore
     function handleDrag(e: any, ui: any) {
-        setPosition(ui);
+        let b: bound = bounds;
 
-        //console.log(ui.x * -1 + " " + ui.y * -1);
+        console.log(hive.length)
 
-        let v: pos = {
-            x1: bounds.x1 - ui.x,
-            x2: bounds.x2 - ui.x,
-            y1: bounds.y1 - ui.y,
-            y2: bounds.y2 - ui.y
-        }
+        b.deltaX += ui.deltaX;
+        b.deltaY += ui.deltaY;
 
-        let h = removeHives(v);
-        //addHives(v);
-        //generateCol(h, v);
+        if (Math.abs(b.deltaX) > buffer) {
+            if (b.deltaX > 0) {
+                generate(b.minCol - hiveAdj, b.minCol, b.minRow, b.maxRow);
 
-        //setHive(generateHive(v));
-        //console.log(nodeRef.current.children)
-    }
+                b.minCol -= hiveAdj;
+                b.maxCol -= hiveAdj;
+            } else {
+                generate(b.maxCol, b.maxCol + hiveAdj, b.minRow, b.maxRow);
 
-
-    function removeHives(b: pos) {
-        return hive.filter((hive: hexdata) => {
-                return (
-                    hive.pos.x1 >= b.x1 &&
-                    hive.pos.x2 <= b.x2 &&
-                    hive.pos.y1 >= b.y1 &&
-                    hive.pos.y2 <= b.y2
-                );
-            }
-        );
-    }
-
-    function addHives(b: pos) {
-
-    }
-
-    function generateCol(h: hexdata[], b: pos) {
-
-        let y = b.y1;
-
-        while (y < b.y2) {
-            let data: hexdata = {
-                data: getPost(),
-                pos: {x1: maxMin.maxX, y1: y, x2: maxMin.maxX + 230, y2: y + 200}
+                b.minCol += hiveAdj;
+                b.maxCol += hiveAdj;
             }
 
-            h.push(data);
-
-            y += yJump;
+            b.deltaX = 0;
         }
 
-        setHive(h);
-        maxMin.maxX += xJump;
-        setMaxMin(maxMin);
+        if (Math.abs(b.deltaY) > buffer) {
+            if (b.deltaY > 0) {
+                generate(b.minCol, b.maxCol, b.minRow - hiveAdj, b.minRow);
 
+                b.minRow -= hiveAdj;
+                b.maxRow -= hiveAdj;
+            } else {
+                generate(b.minCol, b.maxCol, b.maxRow, b.maxRow + hiveAdj);
+
+                b.minRow += hiveAdj;
+                b.maxRow += hiveAdj;
+            }
+
+            b.deltaY = 0;
+        }
+
+        setBounds(b);
     }
 
-    function generateHive(b: pos) {
-        let elements: any = [];
+    function generate(minCol: number, maxCol: number, minRow: number, maxRow: number) {
+        let elements = removeHives();
 
-        let x = b.x1;
-        let y = b.y1;
+        for (let col = minCol; col < maxCol; col++) {
+            for (let row = minRow; row < maxRow; row++) {
 
-        let maxContainer: any = {minX: x, minY: y};
-
-        let col = 0;
-        let row = 0;
-
-        //console.log(x + ":" + y + " " + position.x + ":" + position.y + " " + hive.length);
-
-        while (x < b.x2) {
-
-            while (y < b.y2) {
                 let data: hexdata = {
                     data: getPost(),
-                    pos: {x1: x, y1: y, x2: x + 230, y2: y + 200},
                     grid: {row: row, col: col}
                 }
 
-                elements.push(data)
-
-                y += yJump;
-                row += 1;
+                elements.push(data);
             }
-
-            if (col == 1) maxContainer.maxY = y;
-
-            x += xJump;
-            y = b.y1;
-
-            col += 1;
-            row = 0;
         }
 
-        maxContainer.maxX = x;
+        setHive(elements);
+    }
 
-        console.log(maxContainer);
-        setMaxMin(maxContainer)
+    function removeHives() {
+        return hive.filter((hive: hexdata) => {
+                return (
+                    hive.grid.row <= bounds.maxRow + viewportAdj &&
+                    hive.grid.row >= bounds.minRow - viewportAdj &&
+                    hive.grid.col <= bounds.maxCol + viewportAdj &&
+                    hive.grid.col >= bounds.minCol - viewportAdj
+                );
+            }
+        )
+    }
 
-        return elements;
+    function generateInitHive() {
+
+        let bounds = {
+            maxCol: Math.ceil(window.innerWidth / xJump) + viewportAdj,
+            maxRow: Math.ceil(window.innerHeight / yJump) + viewportAdj,
+            minCol: -viewportAdj,
+            minRow: -viewportAdj,
+            deltaX: 0,
+            deltaY: 0
+        };
+
+        setBounds(bounds);
+        generate(bounds.minCol, bounds.maxCol, bounds.minRow, bounds.maxRow);
     }
 
     return (
         <div className="select-none no-scroll bg-black h-screen w-screen">
 
             {/* Generated Hive Div */}
-            <Draggable position={position} onDrag={handleDrag} nodeRef={nodeRef}>
+            <Draggable onDrag={handleDrag} nodeRef={nodeRef}>
                 <div ref={nodeRef}
                      className="relative bg-red-500 h-full w-full min-w-screen min-h-screen cursor-grab active:cursor-grabbing test">
 

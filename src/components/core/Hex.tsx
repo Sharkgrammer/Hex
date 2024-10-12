@@ -1,4 +1,4 @@
-import {hexdata, yAdj} from "../../index.ts";
+import {hexdata, yAdj, getWidth, getHeight} from "../../index.ts";
 
 function Hex({data, className, id}: { data: hexdata, className?: string, id?: string }) {
 
@@ -7,7 +7,7 @@ function Hex({data, className, id}: { data: hexdata, className?: string, id?: st
 
     return (
         <div id={id} className={`absolute ${className}`}
-             style={{left: data.pos.x1, top: data.pos.y1 + (data.grid.col % 2 != 0 ? yAdj : 0)}}>
+             style={{left: getWidth(data.grid.col), top: getHeight(data.grid.row) + (data.grid.col % 2 != 0 ? yAdj : 0)}}>
 
             <div className="hexagon bg-main flex justify-center items-center h-full w-full">
                 <p>{data.data.title}</p>

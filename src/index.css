@@ -5,12 +5,12 @@
 .hexagon {
   width: 230px;
   height: 200px;
-  /* clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); */
-  @apply border-4 border-black;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+/* @apply border-4 border-black; */
 }
 
 body {
-  position: fixed;
+position: fixed;
 
 }
 
