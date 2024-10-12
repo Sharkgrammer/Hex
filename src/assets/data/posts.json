@@ -1,21 +1,50 @@
 [
-  { "title": "hello" },
-  { "title": "hi" },
-  { "title": "hey" },
-  { "title": "greetings" },
-  { "title": "salutations" },
-  { "title": "bonjour" },
-  { "title": "hola" },
-  { "title": "ciao" },
-  { "title": "namaste" },
-  { "title": "aloha" },
-  { "title": "howdy" },
-  { "title": "sup" },
-  { "title": "yo" },
-  { "title": "ola" },
-  { "title": "ahoy" },
-  { "title": "wassup" },
-  { "title": "hallo" },
-  { "title": "heya" },
-  { "title": "konnichiwa" }
+  {
+    "type": "text",
+    "title": "Just saw your post, it's awesome!"
+  },
+  {
+    "type": "text",
+    "title": "Can't believe this just happened!"
+  },
+  {
+    "type": "text",
+    "title": "Thanks for the follow!"
+  },
+  {
+    "type": "video",
+    "link": "https://www.youtube.com/watch?v=9f9wsP--DIY"
+  },
+  {
+    "type": "text",
+    "title": "Loved your latest update!"
+  },
+  {
+    "type": "text",
+    "title": "Check out this cool video I found!"
+  },
+  {
+    "type": "text",
+    "title": "You have to see this!"
+  },
+  {
+    "type": "text",
+    "title": "Great work, keep it up!"
+  },
+  {
+    "type": "text",
+    "title": "Just sent you a message!"
+  },
+  {
+    "type": "text",
+    "title": "That was such a good point!"
+  },
+  {
+    "type": "text",
+    "title": "Let’s catch up soon!"
+  },
+  {
+    "type": "image",
+    "link": "./img/business.PNG"
+  }
 ]

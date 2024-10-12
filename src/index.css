@@ -3,24 +3,29 @@
 @tailwind utilities;
 
 .hexagon {
-  width: 230px;
-  height: 200px;
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-/* @apply border-4 border-black; */
+    width: 230px;
+    height: 200px;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.inner-hexagon {
+    width: 220px;
+    height: 190px;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 body {
-position: fixed;
+    position: fixed;
 
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scroll::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scroll {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }

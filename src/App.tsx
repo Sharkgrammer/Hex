@@ -122,12 +122,12 @@ function App() {
     }
 
     return (
-        <div className="select-none no-scroll bg-black h-screen w-screen">
+        <div className="select-none no-scroll bg-main-light h-screen w-screen">
 
             {/* Generated Hive Div */}
             <Draggable onDrag={handleDrag} nodeRef={nodeRef}>
                 <div ref={nodeRef}
-                     className="relative bg-red-500 h-full w-full min-w-screen min-h-screen cursor-grab active:cursor-grabbing test">
+                     className="relative cursor-grab active:cursor-grabbing test">
 
                     {hive.map((hex, index) => (
                         <Hex data={hex} key={index}/>
