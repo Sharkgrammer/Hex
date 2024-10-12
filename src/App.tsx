@@ -55,9 +55,7 @@ function App() {
             }
 
             b.deltaX = 0;
-        }
-
-        if (Math.abs(b.deltaY) > buffer) {
+        } else if (Math.abs(b.deltaY) > buffer) {
             if (b.deltaY > 0) {
                 generate(b.minCol, b.maxCol, b.minRow - hiveAdj, b.minRow);
 
