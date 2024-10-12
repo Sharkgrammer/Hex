@@ -21,6 +21,7 @@ function App() {
     const post = useRef<number>(0);
 
     const [hive, setHive] = useState<hexdata[]>([]);
+    // @ts-ignore
     const [modalHive, setModalHive] = useState<hexdata>(null);
 
     useEffect(() => {
@@ -128,12 +129,6 @@ function App() {
         }, 1000);
     }
 
-    function showPost(hex: hexdata) {
-        console.log(hex.post.type);
-
-        setModalHive(hex);
-    }
-
     return (
         <div className="select-none no-scroll bg-main-light h-screen w-screen">
 
@@ -143,7 +138,7 @@ function App() {
                     <div ref={nodeRef} className="relative cursor-grab active:cursor-grabbing test">
 
                         {hive.map((hex, index) => (
-                            <div key={index} onClick={() => !isDragging.current && showPost(hex)}>
+                            <div key={index} onClick={() => !isDragging.current &&  setModalHive(hex)}>
                                 <Hex data={hex}/>
                             </div>
                         ))}

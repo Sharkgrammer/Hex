@@ -1,50 +1,90 @@
 [
   {
-    "type": "text",
-    "title": "Just saw your post, it's awesome!"
+    "type": "image",
+    "link": "./img/moonlitsea.png"
   },
   {
     "type": "text",
-    "title": "Can't believe this just happened!"
-  },
-  {
-    "type": "text",
-    "title": "Thanks for the follow!"
-  },
-  {
-    "type": "video",
-    "link": "https://www.youtube.com/watch?v=9f9wsP--DIY"
-  },
-  {
-    "type": "text",
-    "title": "Loved your latest update!"
-  },
-  {
-    "type": "text",
-    "title": "Check out this cool video I found!"
-  },
-  {
-    "type": "text",
-    "title": "You have to see this!"
-  },
-  {
-    "type": "text",
-    "title": "Great work, keep it up!"
-  },
-  {
-    "type": "text",
-    "title": "Just sent you a message!"
-  },
-  {
-    "type": "text",
-    "title": "That was such a good point!"
-  },
-  {
-    "type": "text",
-    "title": "Let’s catch up soon!"
+    "text": "Hex is a cool concept. I like it!"
   },
   {
     "type": "image",
-    "link": "./img/business.PNG"
+    "link": "./img/owl1.png"
+  },
+  {
+    "type": "image",
+    "link": "./img/sunsetpopcorn.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/snowbears.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/sharksflowers.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/quicksunset.jpg"
+  },
+  {
+    "type": "text",
+    "text": "The art belongs to @artbymissmolly."
+  },
+  {
+    "type": "image",
+    "link": "./img/sunsetpyramids.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/pinksunset.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/bigmoonlistsea.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/owl2.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/mojtu.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/flowerfield.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/forestbunny.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/kestrel.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/nicemoon.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/dragon.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/swans.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/butterfly.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/niceflowers.jpg"
+  },
+  {
+    "type": "image",
+    "link": "./img/owl3.jpg"
   }
 ]

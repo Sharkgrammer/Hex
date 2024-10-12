@@ -12,9 +12,9 @@ function Hex({data, className, id, modal}: { data: hexdata, className?: string, 
 
             <div className="hexagon bg-main-dark flex justify-center items-center h-full w-full">
 
-                <div className="inner-hexagon text-center bg-main flex justify-center items-center">
+                <div className="inner-hexagon text-center font-semibold bg-main flex justify-center items-center">
                     {data.post.type == "text" && (
-                        <p className="w-[160px]">{data.post.title}</p>
+                        <p className="w-[160px]">{data.post.text}</p>
                     ) || data.post.type == "video" && (
                         <div>
                             <ReactPlayer url={data.post.link} pip={false} width="220px" height="200px"/>
