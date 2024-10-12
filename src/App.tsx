@@ -133,6 +133,11 @@ function App() {
         if (!isDragging.current) setModalHive(hex);
     }
 
+    function hideModal(){
+        // @ts-ignore
+        setModalHive(null);
+    }
+
     return (
         <div className="select-none no-scroll bg-main-light h-screen w-screen">
 
@@ -154,7 +159,7 @@ function App() {
             {modalHive && (
                 <div
                     className="absolute h-screen w-screen  flex justify-center items-center cursor-pointer animate-fade-in"
-                    onClick={() => setModalHive(null)}>
+                    onClick={hideModal}>
 
                     <div className="w-[230px] h-[200px] scale-150 xs:scale-175 md:scale-200 opacity-100 flex items-center justify-center">
 
