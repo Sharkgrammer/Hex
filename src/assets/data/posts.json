@@ -5,6 +5,10 @@
   },
   {
     "type": "text",
+    "text": "I'm @sharkgrammer on GitHub!"
+  },
+  {
+    "type": "text",
     "text": "Hex is a cool concept. I like it!"
   },
   {
@@ -28,6 +32,10 @@
     "text": "Sometimes you just need a good book."
   },
   {
+    "type": "image",
+    "link": "./img/ac.png"
+  },
+  {
     "type": "text",
     "text": "Dreaming of future adventures."
   },
@@ -42,6 +50,10 @@
   {
     "type": "image",
     "link": "./img/niceflowers.jpg"
+  },
+  {
+    "type": "text",
+    "text": "This is just a proof of concept!"
   },
   {
     "type": "image",
@@ -74,6 +86,10 @@
   {
     "type": "image",
     "link": "./img/sunsetpyramids.jpg"
+  },
+  {
+    "type": "text",
+    "text": "This is a fake comment."
   },
   {
     "type": "image",
@@ -148,6 +164,10 @@
     "text": "Starting the day with coffee and good vibes!"
   },
   {
+    "type": "image",
+    "link": "./img/castle.png"
+  },
+  {
     "type": "text",
     "text": "Life’s too short not to chase your dreams."
   },
@@ -196,7 +216,23 @@
     "text": "Currently obsessed with this new hobby!"
   },
   {
+    "type": "image",
+    "link": "./img/framer.png"
+  },
+  {
     "type": "text",
     "text": "Finding joy in the simple things today."
+  },
+  {
+    "type": "image",
+    "link": "./img/pulse2.png"
+  },
+  {
+    "type": "image",
+    "link": "./img/reddit.png"
+  },
+  {
+    "type": "text",
+    "text": "Hive generation is sorta interesting."
   }
 ]

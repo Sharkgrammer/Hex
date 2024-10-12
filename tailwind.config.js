@@ -9,10 +9,16 @@ export default {
             colors: {
                 'main': '#F4A300',
                 'main-dark': '#D68800',
+                'main-darker': '#A96500',
+                'main-darkest': '#804C00',
                 'main-light': '#FFC45E',
             },
             scale: {
+                '175': '1.75',
                 '200': '2',
+            },
+            screens: {
+                'xs': '440px',
             },
             animation: {
                 'fade-in': 'fade-in 500ms',

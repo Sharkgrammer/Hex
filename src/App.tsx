@@ -126,7 +126,11 @@ function App() {
     function dragStop() {
         setTimeout(() => {
             isDragging.current = false;
-        }, 1000);
+        }, 10);
+    }
+
+    function showModal(hex: hexdata) {
+        if (!isDragging.current) setModalHive(hex);
     }
 
     return (
@@ -138,7 +142,7 @@ function App() {
                     <div ref={nodeRef} className="relative cursor-grab active:cursor-grabbing test">
 
                         {hive.map((hex, index) => (
-                            <div key={index} onClick={() => !isDragging.current &&  setModalHive(hex)}>
+                            <div key={index} onClick={() => showModal(hex)} onTouchEnd={() => showModal(hex)}>
                                 <Hex data={hex}/>
                             </div>
                         ))}
@@ -152,7 +156,7 @@ function App() {
                     className="absolute h-screen w-screen  flex justify-center items-center cursor-pointer animate-fade-in"
                     onClick={() => setModalHive(null)}>
 
-                    <div className="w-[230px] h-[200px] scale-200 opacity-100 flex items-center justify-center">
+                    <div className="w-[230px] h-[200px] scale-150 xs:scale-175 md:scale-200 opacity-100 flex items-center justify-center">
 
                         {hive.length > 0 && (
                             <Hex data={modalHive} modal={true}/>
