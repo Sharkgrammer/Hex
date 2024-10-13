@@ -158,7 +158,7 @@ function App() {
 
             {modalHive && (
                 <div
-                    className="absolute h-screen w-screen  flex justify-center items-center cursor-pointer animate-fade-in"
+                    className="absolute h-screen w-screen  flex justify-center items-center cursor-pointer animate-fade-in touch-none"
                     onClick={hideModal}>
 
                     <div className="w-[230px] h-[200px] scale-150 xs:scale-175 md:scale-200 opacity-100 flex items-center justify-center">
