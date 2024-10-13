@@ -23,6 +23,8 @@ export default {
             animation: {
                 'fade-in': 'fade-in 500ms',
                 'op-fade': 'op-fade 500ms',
+                'fade-out': 'fade-out 500ms',
+                'op-fade-back': 'op-fade-back 500ms',
             },
             keyframes: {
                 'fade-in': {
@@ -32,6 +34,14 @@ export default {
                 'op-fade': {
                     '0%': {opacity: 1},
                     '100%': {opacity: 0.5},
+                },
+                'fade-out': {
+                    '0%': {opacity: 1, transform: "scale(1)"},
+                    '100%': {opacity: 0, transform: "scale(0.5)"},
+                },
+                'op-fade-back': {
+                    '0%': {opacity: 0.5},
+                    '100%': {opacity: 1},
                 },
             },
         },

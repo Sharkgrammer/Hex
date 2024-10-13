@@ -23,6 +23,7 @@ function App() {
     const [hive, setHive] = useState<hexdata[]>([]);
     // @ts-ignore
     const [modalHive, setModalHive] = useState<hexdata>(null);
+    const [modalFadeOut, setModalFadeOut] = useState<boolean>(false);
 
     useEffect(() => {
         generateInitHive();
@@ -133,15 +134,22 @@ function App() {
         if (!isDragging.current) setModalHive(hex);
     }
 
-    function hideModal(){
+    function hideModal() {
+        setModalFadeOut(true);
+        setTimeout(hideModalFinish, 500);
+    }
+
+    function hideModalFinish() {
         // @ts-ignore
         setModalHive(null);
+        setModalFadeOut(false);
     }
 
     return (
         <div className="select-none no-scroll bg-main-light h-screen w-screen">
 
-            <div className={`${modalHive && "animate-op-fade opacity-50"}`}>
+            <div
+                className={`${modalHive && (modalFadeOut ? "animate-op-fade-back opacity-100" : "animate-op-fade opacity-50")}`}>
                 {/* Generated Hive Div */}
                 <Draggable onDrag={handleDrag} nodeRef={nodeRef} onStop={dragStop}>
                     <div ref={nodeRef} className="relative cursor-grab active:cursor-grabbing test">
@@ -158,10 +166,11 @@ function App() {
 
             {modalHive && (
                 <div
-                    className="absolute h-screen w-screen  flex justify-center items-center cursor-pointer animate-fade-in touch-none"
-                    onClick={hideModal}>
+                    className={`absolute h-screen w-screen  flex justify-center items-center cursor-pointer touch-none
+                     ${modalFadeOut ? "animate-fade-out" : "animate-fade-in"}`} onClick={hideModal}>
 
-                    <div className="w-[230px] h-[200px] scale-150 xs:scale-175 md:scale-200 opacity-100 flex items-center justify-center">
+                    <div
+                        className="w-[230px] h-[200px] scale-150 xs:scale-175 md:scale-200 opacity-100 flex items-center justify-center">
 
                         {hive.length > 0 && (
                             <Hex data={modalHive} modal={true}/>
